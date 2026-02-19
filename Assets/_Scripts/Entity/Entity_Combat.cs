@@ -26,9 +26,14 @@ public class Entity_Combat : MonoBehaviour
             if(damageble == null)
             {
                 continue;
-            }   
-            damageble.TakeDamage(damage, transform);
-            vfx.CreateOnHitVFX(target.transform);
+            }  
+
+            bool targetGotHit = damageble.TakeDamage(damage, transform);
+
+            if (targetGotHit)
+            {
+                vfx.CreateOnHitVFX(target.transform);
+            }
         }
     }
 
