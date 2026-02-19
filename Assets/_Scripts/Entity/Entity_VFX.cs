@@ -4,32 +4,45 @@ using UnityEngine;
 public class Entity_VFX : MonoBehaviour
 {
     private SpriteRenderer sr;
-    private Material originaltMaterial;
-    private Coroutine onDamageVfxCoroutine;
+    private Entity entity;
 
     [Header("On Taking Damage VFX")]
     [SerializeField] private Material onDamageMaterial;
     [SerializeField] private float onDamageVfxDuration = 0.15f;
+    private Material originaltMaterial;
+    private Coroutine onDamageVfxCoroutine;
 
     [Header("On Doing Damage VFX")]
     [SerializeField] private Color hitVfxColor = Color.white;
     [SerializeField] private GameObject hitVfxPrefab;
+    [SerializeField] private GameObject critHitVfxPrefab;
 
     private void Awake()
     {
+        entity = GetComponent<Entity>();
         sr = GetComponentInChildren<SpriteRenderer>();
         originaltMaterial = sr.material;
     }
 
-    public void CreateOnHitVFX(Transform target)
+    public void CreateOnHitVFX(Transform target, bool isCrit)
     {
-       GameObject vfx = Instantiate(hitVfxPrefab, target.position, Quaternion.identity);
-       vfx.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor;
+        GameObject hitPrefab = isCrit ? critHitVfxPrefab : hitVfxPrefab;
+        GameObject vfx = Instantiate(hitPrefab, target.position, Quaternion.identity);
+
+        if(isCrit == false)
+        {
+        vfx.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor;    
+        }
+
+        if(entity.facingDir == -1 && isCrit)
+        {
+            vfx.transform.Rotate(0f, 180f, 0f);
+        }
     }
 
     public void PlayOnDamageVfx()
     {
-        if(onDamageVfxCoroutine != null)
+        if (onDamageVfxCoroutine != null)
         {
             StopCoroutine(onDamageVfxCoroutine);
         }
