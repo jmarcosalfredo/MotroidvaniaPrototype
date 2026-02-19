@@ -15274,11 +15274,11 @@ MonoBehaviour:
     armorReduction:
       baseValue: 0
     fireDamage:
-      baseValue: 0
+      baseValue: 100
     iceDamage:
-      baseValue: 0
+      baseValue: 25
     lightningDamage:
-      baseValue: 0
+      baseValue: 6
   defense:
     armor:
       baseValue: 0

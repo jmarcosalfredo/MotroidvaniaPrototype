@@ -8,9 +8,9 @@ public class Enemy_Health : Entity_Health
     {
         enemy = GetComponentInParent<Enemy>();
     }
-    public override bool TakeDamage(float damage, Transform damageDealer)
+    public override bool TakeDamage(float damage, float elementalDamage, ElementType element, Transform damageDealer)
     {
-        bool wasHit =base.TakeDamage(damage, damageDealer);
+        bool wasHit =base.TakeDamage(damage, elementalDamage, element, damageDealer);
         
         if (wasHit == false)
         {

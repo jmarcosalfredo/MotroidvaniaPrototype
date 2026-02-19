@@ -29,8 +29,9 @@ public class Entity_Combat : MonoBehaviour
                 continue;
             }  
 
+            float elementalDamage = stats.GetElementalDamage(out ElementType element);
             float damage = stats.GetPhysicalDamage(out bool isCrit);
-            bool targetGotHit = damageble.TakeDamage(damage, transform);
+            bool targetGotHit = damageble.TakeDamage(damage, elementalDamage, element, transform);
 
             if (targetGotHit)
             {
