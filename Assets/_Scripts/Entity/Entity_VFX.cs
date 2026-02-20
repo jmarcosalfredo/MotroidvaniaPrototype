@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity_VFX : MonoBehaviour
@@ -17,11 +18,68 @@ public class Entity_VFX : MonoBehaviour
     [SerializeField] private GameObject hitVfxPrefab;
     [SerializeField] private GameObject critHitVfxPrefab;
 
+    [Header("Element Colors")]
+    [SerializeField] private Color chillVfx = Color.cyan;
+    [SerializeField] private Color burnVfx = Color.red;
+    [SerializeField] private Color electrifyVfx = Color.yellow;
+    private Color originalHitVfxColor;
+
     private void Awake()
     {
         entity = GetComponent<Entity>();
         sr = GetComponentInChildren<SpriteRenderer>();
         originaltMaterial = sr.material;
+        originalHitVfxColor = hitVfxColor;
+    }
+
+    public void PlayOnStatusVfx(float duration, ElementType element)
+    {
+        switch (element)
+        {
+            case ElementType.Ice:
+                StartCoroutine(PlayStatusVfxCo(duration, chillVfx));
+                break;
+            
+            case ElementType.Fire:
+                StartCoroutine(PlayStatusVfxCo(duration, burnVfx));
+                break;
+
+            case ElementType.Lightning:
+                StartCoroutine(PlayStatusVfxCo(duration, electrifyVfx));
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void StopAllVfx()
+    {
+        StopAllCoroutines();
+        sr.color = Color.white;
+        sr.material = originaltMaterial;
+    }
+
+        private IEnumerator PlayStatusVfxCo(float duration, Color effectColor)
+    {
+        float thickInterval = 0.2f;
+        float timeHasPassed = 0;
+
+        Color lightColor = effectColor * 1.2f;
+        Color darkColor = effectColor * 0.8f;
+
+        bool toggle = false;
+
+        while (timeHasPassed < duration)
+        {
+            sr.color = toggle ? lightColor : darkColor;
+            toggle = !toggle;
+
+            yield return new WaitForSeconds(thickInterval);
+            timeHasPassed += thickInterval;
+        }
+
+        sr.color = Color.white;
     }
 
     public void CreateOnHitVFX(Transform target, bool isCrit)
@@ -37,6 +95,20 @@ public class Entity_VFX : MonoBehaviour
         if(entity.facingDir == -1 && isCrit)
         {
             vfx.transform.Rotate(0f, 180f, 0f);
+        }
+    }
+
+    public void UpdateOnHitColor(ElementType element)
+    {
+        switch (element)
+        {
+            case ElementType.Ice:
+                hitVfxColor = chillVfx;
+                break;
+
+            default:
+                hitVfxColor = originalHitVfxColor;
+                break;
         }
     }
 
