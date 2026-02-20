@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class Chest : MonoBehaviour , IDamageble
+public class Object_Chest : MonoBehaviour , IDamageble
 {
     private Rigidbody2D rb => GetComponentInChildren<Rigidbody2D>();
     private Animator anim => GetComponentInChildren<Animator>();
