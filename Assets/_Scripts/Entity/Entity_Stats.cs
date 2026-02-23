@@ -136,4 +136,56 @@ public class Entity_Stats : MonoBehaviour
 
         return finalMaxHealth;
     }
+
+    public Stat GetStatByType(StatType type)
+    {
+        switch (type)
+        {
+            case StatType.MaxHealth:
+                return resource.maxHealth;
+            case StatType.HealthRegen:
+                return resource.healthRegen;
+
+            case StatType.Strength:
+                return major.strength;
+            case StatType.Agility:
+                return major.agility;
+            case StatType.Inteligence:
+                return major.intelligence;
+            case StatType.Vitality:
+                return major.vitality;
+
+            case StatType.AttackSpeed:
+                return offense.attackSpeed;
+            case StatType.Damage:
+                return offense.damage;
+            case StatType.CritChance:
+                return offense.critChance;
+            case StatType.CritPower:
+                return offense.critPower;
+            case StatType.ArmorReduction:
+                return offense.armorReduction;
+            case StatType.FireDamage:
+                return offense.fireDamage;
+            case StatType.IceDamage:
+                return offense.iceDamage;
+            case StatType.LightningDamage:
+                return offense.lightningDamage;
+
+            case StatType.Armor:
+                return defense.armor;
+            case StatType.Evasion:
+                return defense.evasion;
+            case StatType.IceResistance:
+                return defense.iceRes;
+            case StatType.FireResistance:
+                return defense.fireRes;
+            case StatType.LightningResistance:
+                return defense.lightningRes;
+                
+            default:
+                Debug.LogWarning($"StatType {type} not found!");
+                return null;
+        }
+    }
 }
