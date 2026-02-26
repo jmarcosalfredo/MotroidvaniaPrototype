@@ -693,10 +693,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2078264012}
-  - {fileID: 273703841}
-  - {fileID: 529447868}
   - {fileID: 24301754}
   - {fileID: 789527308}
+  - {fileID: 273703841}
+  - {fileID: 529447868}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13857,7 +13857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &514274715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16231,11 +16231,11 @@ GameObject:
   - component: {fileID: 932190506}
   - component: {fileID: 932190504}
   - component: {fileID: 932190507}
-  - component: {fileID: 932190505}
   - component: {fileID: 932190508}
   - component: {fileID: 932190502}
   - component: {fileID: 932190501}
   - component: {fileID: 932190509}
+  - component: {fileID: 932190510}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -16383,26 +16383,6 @@ MonoBehaviour:
   knockbackDuration: 0.2
   heavyKnockbackDuration: 0.5
   heavyDamageThreshold: 0.3
---- !u!114 &932190505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932190498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe94b9339b523c145af4dc7d27b53f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onDamageMaterial: {fileID: 2100000, guid: cf1420b5c97dc824b8852f8401fbbc0a, type: 2}
-  onDamageVfxDuration: 0.2
-  hitVfxColor: {r: 0.9150943, g: 0.9070987, b: 0.3237362, a: 1}
-  hitVfxPrefab: {fileID: 468659648467127127, guid: 46dfcc4df0ab29544940a6acbfbed56c, type: 3}
-  critHitVfxPrefab: {fileID: 6877154826775256720, guid: 8bb7110af3f602c47ae2cfec6a6540be, type: 3}
-  chillVfx: {r: 0.49803922, g: 0.702218, b: 0.85882354, a: 1}
-  burnVfx: {r: 0.9245283, g: 0.2543125, b: 0, a: 1}
-  electrifyVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &932190506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16527,6 +16507,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08df7b2ba34087f4d8eeebd304c47a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &932190510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932190498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8114bc8aa894ae4d89eeb3b45c52fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDamageMaterial: {fileID: 2100000, guid: cf1420b5c97dc824b8852f8401fbbc0a, type: 2}
+  onDamageVfxDuration: 0.15
+  hitVfxColor: {r: 1, g: 1, b: 1, a: 1}
+  hitVfxPrefab: {fileID: 468659648467127127, guid: 46dfcc4df0ab29544940a6acbfbed56c, type: 3}
+  critHitVfxPrefab: {fileID: 6877154826775256720, guid: 8bb7110af3f602c47ae2cfec6a6540be, type: 3}
+  chillVfx: {r: 0, g: 1, b: 1, a: 1}
+  burnVfx: {r: 1, g: 0, b: 0, a: 1}
+  electrifyVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  imageEchoInterval: 0.05
+  imageEchoPrefab: {fileID: 6812291539192281593, guid: 28979d2382b64d0478463088e29916b1, type: 3}
 --- !u!1 &946806972
 GameObject:
   m_ObjectHideFlags: 0
@@ -17137,10 +17139,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 577624172}
+  - {fileID: 102207584}
+  - {fileID: 1970604671}
   - {fileID: 1463725140}
   - {fileID: 681816720}
-  - {fileID: 1970604671}
-  - {fileID: 102207584}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -19544,6 +19546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e45ff0132fdac49973e4432eb5d3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillType: 0
+  upgradeType: 0
   cooldown: 3
 --- !u!1 &1648332021
 GameObject:

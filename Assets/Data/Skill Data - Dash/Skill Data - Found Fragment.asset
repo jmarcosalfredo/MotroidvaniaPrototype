@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 3
   skillType: 1
-  upgradeType: 5
+  upgradeData:
+    upgradeType: 5
+    cooldown: 3
   skillName: Found Fragment
   description: 'Create a time shard on arrival.
 
