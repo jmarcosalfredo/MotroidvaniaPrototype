@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using Mono.Cecil.Cil;
 
 [Serializable]
 public class UI_TreeConnectDetails
@@ -26,6 +28,21 @@ public class UI_TreeConectorHandler : MonoBehaviour
         {
             originalColor = connectionImage.color;
         }
+    }
+
+    public UI_TreeNode[] GetChildNodes()
+    {
+        List<UI_TreeNode> childrenToReturn = new List<UI_TreeNode>();
+
+        foreach (var node in connectionDetails)
+        {
+            if (node.childNode != null)
+            {
+                childrenToReturn.Add(node.childNode.GetComponent<UI_TreeNode>());
+            }
+        }
+
+        return childrenToReturn.ToArray();
     }
 
     private void OnValidate()
