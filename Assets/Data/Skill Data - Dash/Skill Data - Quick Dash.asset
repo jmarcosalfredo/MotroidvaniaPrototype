@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Skill Data - Quick Dash
   m_EditorClassIdentifier: 
   cost: 0
+  unlockedByDefault: 1
   skillType: 1
   upgradeData:
     upgradeType: 4
