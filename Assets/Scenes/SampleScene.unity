@@ -14790,7 +14790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &514274715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16432,6 +16432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 2971194739317590519, guid: 720a7cf76ce34d44b9904f01afcaefd3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4423081178850013274, guid: 720a7cf76ce34d44b9904f01afcaefd3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.725133
@@ -16474,11 +16478,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4917003614841499497, guid: 720a7cf76ce34d44b9904f01afcaefd3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4917003614841499497, guid: 720a7cf76ce34d44b9904f01afcaefd3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17708,11 +17712,6 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256
-  defaultDuration: 3
-  chillSlowMultiplier: 0
-  electrifyChargeBuildUp: 0
-  fireScale: 0.8
-  lightningScale: 2.5
   counterRecovery: 0.25
 --- !u!114 &932190507
 MonoBehaviour:
@@ -17834,7 +17833,7 @@ MonoBehaviour:
   critHitVfxPrefab: {fileID: 6877154826775256720, guid: 8bb7110af3f602c47ae2cfec6a6540be, type: 3}
   chillVfx: {r: 0, g: 1, b: 1, a: 1}
   burnVfx: {r: 1, g: 0, b: 0, a: 1}
-  electrifyVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  shockVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   imageEchoInterval: 0.05
   imageEchoPrefab: {fileID: 6812291539192281593, guid: 28979d2382b64d0478463088e29916b1, type: 3}
 --- !u!1 &946806972
@@ -21094,9 +21093,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neededNodes:
   - {fileID: 577624170}
+  - {fileID: 849213215}
   conflictNodes:
   - {fileID: 681816718}
-  - {fileID: 1970604669}
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: 0edce8da745c4994e96e997a664bfa0a, type: 2}
