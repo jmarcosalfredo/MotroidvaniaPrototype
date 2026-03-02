@@ -5,6 +5,7 @@ public class SkillObject_Shard : SkillObject_Base
 {
 
     public event Action OnExplode;
+    private Skill_Shard shardManager;
     [SerializeField] private GameObject explosionVfxPrefab;
 
     private Transform target;
@@ -26,8 +27,15 @@ public class SkillObject_Shard : SkillObject_Base
         this.speed = speed;
     }
 
-    public void SetupShard(float detonationTimer)
+    public void SetupShard(Skill_Shard shardManager)
     {
+        this.shardManager = shardManager;
+
+        playerStats = shardManager.player.stats;
+        damageScaleData = shardManager.damageScaleData;
+
+        float detonationTimer = shardManager.GetDetonateTime();
+
         Invoke(nameof(Explode), detonationTimer);
     }
 

@@ -926,7 +926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300.71912, y: 100.34894}
+  m_AnchoredPosition: {x: -469, y: 202}
   m_SizeDelta: {x: 482.2782, y: 455.30212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &138700283
@@ -16420,6 +16420,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2964423202917731265, guid: 720a7cf76ce34d44b9904f01afcaefd3, type: 3}
+      propertyPath: offense.damage.baseValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2964423202917731265, guid: 720a7cf76ce34d44b9904f01afcaefd3, type: 3}
+      propertyPath: resource.maxHealth.baseValue
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2971194739317590519, guid: 720a7cf76ce34d44b9904f01afcaefd3, type: 3}
       propertyPath: m_Name
       value: Enemy_Skeleton
@@ -17685,14 +17693,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c7efab88bef024abbf1467b8d5c59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicAttackScale:
+    physical: 1
+    elemental: 1
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 0.4
   targetCheck: {fileID: 1708138977}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256
   defaultDuration: 3
-  chillSlowMultiplier: 0.2
-  electrifyChargeBuildUp: 0.4
+  chillSlowMultiplier: 0
+  electrifyChargeBuildUp: 0
   fireScale: 0.8
   lightningScale: 2.5
   counterRecovery: 0.25
@@ -17733,7 +17751,7 @@ MonoBehaviour:
       baseValue: 0
       modifiers: []
     fireDamage:
-      baseValue: 0
+      baseValue: 10
       modifiers: []
     iceDamage:
       baseValue: 0
@@ -18715,7 +18733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -865, y: 266}
+  m_AnchoredPosition: {x: -979, y: 385}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1083080078
@@ -21871,15 +21889,15 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 849213216}
-  - {fileID: 499522735}
   - {fileID: 1556668661}
   - {fileID: 138700285}
   - {fileID: 1766041140}
+  - {fileID: 499522735}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: 385}
+  m_AnchoredPosition: {x: 80, y: 385}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1586563398
