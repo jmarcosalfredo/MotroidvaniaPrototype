@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
@@ -12,14 +11,6 @@ public class Entity_Combat : MonoBehaviour
     [SerializeField] private Transform targetCheck;
     [SerializeField] private float targetCheckRadius = 1f;
     [SerializeField] private LayerMask whatIsTarget;
-
-    [Header("Status effect details")]
-    [SerializeField] private float defaultDuration = 3f;
-    [SerializeField] private float chillSlowMultiplier = 0.2f;
-    [SerializeField] private float electrifyChargeBuildUp = 0.4f;
-    [Space]
-    [SerializeField] private float fireScale = 0.8f;
-    [SerializeField] private float lightningScale = 2.5f;
 
     private void Awake()
     {
@@ -40,21 +31,24 @@ public class Entity_Combat : MonoBehaviour
                 continue;
             }
 
-            ElementalEffectData effectData = new ElementalEffectData(stats, basicAttackScale);
+            AttackData attackData = stats.GetAttackData(basicAttackScale);
+            Entity_StatusHandler statusHandler = target.GetComponent<Entity_StatusHandler>();
 
-            float elementalDamage = stats.GetElementalDamage(out ElementType element);
-            float damage = stats.GetPhysicalDamage(out bool isCrit);
-            bool targetGotHit = damageble.TakeDamage(damage, elementalDamage, element, transform);
+            float physDamage = attackData.physicalDamage;
+            float elementalDamage = attackData.elementalDamage;
+            ElementType element = attackData.element;
+            bool isCrit = attackData.isCrit;
+
+            bool targetGotHit = damageble.TakeDamage(physDamage, elementalDamage, element, transform);
 
             if (element != ElementType.None)
             {
-                target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(element, effectData);
+                statusHandler?.ApplyStatusEffect(element, attackData.effectData);
             }
 
             if (targetGotHit)
             {
-                vfx.UpdateOnHitColor(element);
-                vfx.CreateOnHitVFX(target.transform, isCrit);
+                vfx.CreateOnHitVFX(target.transform, isCrit, element);
             }
         }
     }
