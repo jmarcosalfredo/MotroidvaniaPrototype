@@ -1,7 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkillObject_Base : MonoBehaviour
 {
+    [SerializeField] private GameObject onHitVfxPrefab;
+    [Space]
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected Transform targetCheck;
     [SerializeField] protected float checkRadius = 1f;
@@ -9,6 +12,7 @@ public class SkillObject_Base : MonoBehaviour
     protected Entity_Stats playerStats;
     protected ScaleEffectData damageScaleData;
     protected ElementType usedElement;
+    protected bool targetGotHit;
 
     protected void DamageEnemiesInRadius(Transform t, float radius)
     {
@@ -29,11 +33,16 @@ public class SkillObject_Base : MonoBehaviour
             ElementType element = attackData.element;
             bool isCrit = attackData.isCrit;
 
-            damageble.TakeDamage(physDamage, elemDamage, element, transform);
+            targetGotHit = damageble.TakeDamage(physDamage, elemDamage, element, transform);
 
             if(element != ElementType.None)
             {
                 statusHandler?.ApplyStatusEffect(element, attackData.effectData);
+            }
+
+            if (targetGotHit)
+            {
+                Instantiate(onHitVfxPrefab, target.transform.position, Quaternion.identity);
             }
 
             usedElement = element;

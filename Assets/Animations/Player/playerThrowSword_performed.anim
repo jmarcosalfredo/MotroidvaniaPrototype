@@ -27,7 +27,7 @@ AnimationClip:
     - time: 0.14285715
       value: {fileID: 1077065813, guid: b3a38a772e511494780812c4a1ab44b9, type: 3}
     - time: 0.21428572
-      value: {fileID: -1239866191, guid: b3a38a772e511494780812c4a1ab44b9, type: 3}
+      value: {fileID: 8616669206939811349, guid: 6e01fb40690ba9c40bdbe8d34a9c9c8d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -53,7 +53,7 @@ AnimationClip:
     - {fileID: 2039571150, guid: b3a38a772e511494780812c4a1ab44b9, type: 3}
     - {fileID: 541278181, guid: b3a38a772e511494780812c4a1ab44b9, type: 3}
     - {fileID: 1077065813, guid: b3a38a772e511494780812c4a1ab44b9, type: 3}
-    - {fileID: -1239866191, guid: b3a38a772e511494780812c4a1ab44b9, type: 3}
+    - {fileID: 8616669206939811349, guid: 6e01fb40690ba9c40bdbe8d34a9c9c8d, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -81,6 +81,13 @@ AnimationClip:
   m_Events:
   - time: 0.21428572
     functionName: CurrentStateTrigger
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.21428572
+    functionName: ThrowSword
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

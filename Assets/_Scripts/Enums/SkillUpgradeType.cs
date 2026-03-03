@@ -16,4 +16,10 @@ public enum SkillUpgradeType
     Shard_MultiCast, // Shard ability can have up to N charges. Can cast all in a roll.
     Shard_Teleport, // When you use the skill again, you swap places with the shard.
     Shard_TeleportHpRewind, // When you swap places with shard, your HP% is the same as it was when you created the shard.
+
+    // ------ Sword Throw ------
+    SwordThrow, // Throw a sword that damages enemies in its path.
+    SwordThrow_Spin, // Sword will spin at one point and deal damage to enemies. Like a chainsaw.
+    SwordThrow_Pierce, // Sword will pierce through N enemies and deal damage to all in its path.
+    SwordThrow_Bounce, // Sword will bounce between enemies.
 }

@@ -18,6 +18,7 @@ public class Skill_Base : MonoBehaviour
         skillManager = GetComponentInParent<Player_SkillManager>();
         player = GetComponentInParent<Player>();
         lastTimeUsed = -cooldown; // So the skill is available at the start of the game
+        damageScaleData = new ScaleEffectData();
     }
 
     public virtual void TryUseSkill()
@@ -32,7 +33,7 @@ public class Skill_Base : MonoBehaviour
         damageScaleData = upgrade.damageScale;
     }
 
-    public bool CanUseSkill()
+    public virtual bool CanUseSkill()
     {
         if(upgradeType == SkillUpgradeType.None)
         {
