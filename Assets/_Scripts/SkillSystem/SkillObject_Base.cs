@@ -9,14 +9,20 @@ public class SkillObject_Base : MonoBehaviour
     [SerializeField] protected Transform targetCheck;
     [SerializeField] protected float checkRadius = 1f;
 
+    protected Animator anim;
     protected Entity_Stats playerStats;
     protected ScaleEffectData damageScaleData;
     protected ElementType usedElement;
     protected bool targetGotHit;
 
+    protected virtual void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+
     protected void DamageEnemiesInRadius(Transform t, float radius)
     {
-        foreach (var target in EnemiesAround(t, radius))
+        foreach (var target in GetEnemiesAround(t, radius))
         {
             IDamageble damageble = target.GetComponent<IDamageble>();
 
@@ -35,7 +41,7 @@ public class SkillObject_Base : MonoBehaviour
 
             targetGotHit = damageble.TakeDamage(physDamage, elemDamage, element, transform);
 
-            if(element != ElementType.None)
+            if (element != ElementType.None)
             {
                 statusHandler?.ApplyStatusEffect(element, attackData.effectData);
             }
@@ -53,7 +59,7 @@ public class SkillObject_Base : MonoBehaviour
     {
         Transform target = null;
         float closestDistance = Mathf.Infinity;
-        foreach (var enemy in EnemiesAround(transform, 10f))
+        foreach (var enemy in GetEnemiesAround(transform, 10f))
         {
             float distance = Vector2.Distance(transform.position, enemy.transform.position);
             if (distance < closestDistance)
@@ -65,7 +71,7 @@ public class SkillObject_Base : MonoBehaviour
         return target;
     }
 
-    protected Collider2D[] EnemiesAround(Transform t, float radius)
+    protected Collider2D[] GetEnemiesAround(Transform t, float radius)
     {
         return Physics2D.OverlapCircleAll(t.position, radius, whatIsEnemy);
     }
