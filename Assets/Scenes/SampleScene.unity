@@ -1062,12 +1062,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2078264012}
-  - {fileID: 24301754}
-  - {fileID: 789527308}
   - {fileID: 2068160131}
   - {fileID: 1291762578}
   - {fileID: 273703841}
   - {fileID: 529447868}
+  - {fileID: 24301754}
+  - {fileID: 789527308}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -19054,11 +19054,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64da7e1f08d919847901764c7e018e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckDistance: 1.4
-  wallCheckDistance: 0.4
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  groundCheckDistance: 1.4
+  wallCheckDistance: 0.4
   groundCheck: {fileID: 932190500}
   primaryWallCheck: {fileID: 1413336285}
   secondaryWallCheck: {fileID: 1853288931}
@@ -19069,6 +19069,8 @@ MonoBehaviour:
   jumpAttackVelocity: {x: 5, y: -6}
   attackVelocityDuration: 0.1
   comboResetTime: 1
+  riseSpeed: 20
+  riseMaxDistance: 3
   moveSpeed: 8
   jumpForce: 12
   wallJumpForce: {x: 6, y: 12}
@@ -20298,8 +20300,8 @@ RectTransform:
   - {fileID: 577624172}
   - {fileID: 1463725140}
   - {fileID: 681816720}
-  - {fileID: 1970604671}
   - {fileID: 102207584}
+  - {fileID: 1970604671}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -24513,10 +24515,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 849213216}
+  - {fileID: 499522735}
   - {fileID: 1556668661}
   - {fileID: 138700285}
   - {fileID: 1766041140}
-  - {fileID: 499522735}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -24612,6 +24614,7 @@ GameObject:
   - component: {fileID: 1604403227}
   - component: {fileID: 1604403228}
   - component: {fileID: 1604403229}
+  - component: {fileID: 1604403230}
   m_Layer: 7
   m_Name: Skills_Holder
   m_TagString: Untagged
@@ -24725,6 +24728,21 @@ MonoBehaviour:
   duplicateChance: 0.9
   damagePercentHealed: 0.3
   cooldownReducedInSecounds: 0
+--- !u!114 &1604403230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604403224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52406c109078be2409ecbbe7bc4fd18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 5
+  upgradeType: 22
+  cooldown: 0
 --- !u!1 &1620566990
 GameObject:
   m_ObjectHideFlags: 0
