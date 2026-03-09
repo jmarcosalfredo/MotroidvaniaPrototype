@@ -62,11 +62,18 @@ public class Entity : MonoBehaviour
 
     }
 
-    public virtual void SlowDownEntity(float duration, float slowMultiplier)
+    public virtual void SlowDownEntity(float duration, float slowMultiplier, bool canOverrideSlowEffect = false)
     {
-        if(slowDownCo != null)
+        if (slowDownCo != null)
         {
-            StopCoroutine(slowDownCo);
+            if (canOverrideSlowEffect)
+            {
+                StopCoroutine(slowDownCo);
+            }
+            else
+            {
+                return;
+            }
         }
 
         slowDownCo = StartCoroutine(SlowDownEntityCo(duration, slowMultiplier));
@@ -77,17 +84,22 @@ public class Entity : MonoBehaviour
         yield return null;
     }
 
+    public virtual void StopSlowDown()
+    {
+        slowDownCo = null;
+    }
+
     public void ReciveKnockBack(Vector2 knockback, float duration)
     {
         if (knockbackCo != null)
         {
             StopCoroutine(knockbackCo);
         }
-        
+
         knockbackCo = StartCoroutine(KnockbackCo(knockback, duration));
     }
 
-    private IEnumerator KnockbackCo (Vector2 knockback, float duration)
+    private IEnumerator KnockbackCo(Vector2 knockback, float duration)
     {
         isKnocked = true;
         rb.linearVelocity = knockback;

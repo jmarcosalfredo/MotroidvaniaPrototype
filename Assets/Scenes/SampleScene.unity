@@ -1062,12 +1062,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2078264012}
+  - {fileID: 24301754}
+  - {fileID: 789527308}
   - {fileID: 2068160131}
   - {fileID: 1291762578}
   - {fileID: 273703841}
   - {fileID: 529447868}
-  - {fileID: 24301754}
-  - {fileID: 789527308}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -19237,7 +19237,7 @@ MonoBehaviour:
       baseValue: 1
       modifiers: []
     damage:
-      baseValue: 10
+      baseValue: 0
       modifiers: []
     critPower:
       baseValue: 0
@@ -19252,7 +19252,7 @@ MonoBehaviour:
       baseValue: 10
       modifiers: []
     iceDamage:
-      baseValue: 0
+      baseValue: 15
       modifiers: []
     lightningDamage:
       baseValue: 0
@@ -20300,8 +20300,8 @@ RectTransform:
   - {fileID: 577624172}
   - {fileID: 1463725140}
   - {fileID: 681816720}
-  - {fileID: 102207584}
   - {fileID: 1970604671}
+  - {fileID: 102207584}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -24515,10 +24515,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 849213216}
-  - {fileID: 499522735}
   - {fileID: 1556668661}
   - {fileID: 138700285}
   - {fileID: 1766041140}
+  - {fileID: 499522735}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -24741,8 +24741,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 5
-  upgradeType: 23
+  upgradeType: 22
   cooldown: 0
+  domainPrefab: {fileID: 4862188758958186301, guid: ca400e81afd07e04f9410f665b076ef6, type: 3}
+  slowDownPercent: 0.8
+  slowDownDomainDuration: 5
+  spellCastDomainSlowDownPercent: 1
+  spellCastDomainDuration: 8
 --- !u!1 &1620566990
 GameObject:
   m_ObjectHideFlags: 0
