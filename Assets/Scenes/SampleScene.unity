@@ -24687,8 +24687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e551b6a6a4b5d747a356006cfaa83be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 4
-  upgradeType: 14
+  skillType: 0
+  upgradeType: 0
   cooldown: 0
   swordPrefab: {fileID: 7165797898275399503, guid: 2c18917a82e6b464f9bf1c3d9b3196ca, type: 3}
   regularThrowPower: 5
@@ -24741,7 +24741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 5
-  upgradeType: 22
+  upgradeType: 23
   cooldown: 0
 --- !u!1 &1620566990
 GameObject:
