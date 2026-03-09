@@ -27,7 +27,7 @@ public enum SkillUpgradeType
     TimeEcho, // Create a clone of the player. It can distract enemies.
     TimeEcho_SinlgleAttack, // The clone will perform one attack.
     TimeEcho_MultiAttack, // The clone will perform multiple attacks.
-    TimeEcho_ChanceToMultiply, // The clone has a chance to create another clone when it attacks.
+    TimeEcho_ChanceToDuplicate, // The clone has a chance to create another clone when it attacks.
 
     TimeEcho_HealWisp, // When clone dies, it creates a heal wisp that heals the player.
 
