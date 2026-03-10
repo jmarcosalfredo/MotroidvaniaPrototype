@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164225c7a7f20bf46bfe6674847738b0, type: 3}
+  m_Name: Skill Data - Echoes of the Past
+  m_EditorClassIdentifier: 
+  skillName: Echoes of the Past
+  description: Each enemy in the field is struck by multiple echoes.
+  icon: {fileID: -1206915745, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
+  cost: 4
+  unlockedByDefault: 0
+  skillType: 5
+  upgradeData:
+    upgradeType: 23
+    cooldown: 120
+    damageScale:
+      physical: 1
+      elemental: 1
+      chillDuration: 3
+      chillSlowMultiplier: 0.2
+      burnDuration: 3
+      burnDamageScale: 1
+      shockDuration: 3
+      shockDamageScale: 1
+      shockCharge: 0.4

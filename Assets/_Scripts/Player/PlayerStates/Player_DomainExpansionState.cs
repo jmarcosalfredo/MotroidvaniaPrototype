@@ -9,7 +9,7 @@ public class Player_DomainExpansionState : PlayerState
     private bool isLevitating;
     private bool createdDomain;
 
-    public Player_DomainExpansionState(StateMachine stateMachine, string animationBoolName, Player player) 
+    public Player_DomainExpansionState(StateMachine stateMachine, string animationBoolName, Player player)
         : base(stateMachine, animationBoolName, player)
     {
     }
@@ -35,10 +35,13 @@ public class Player_DomainExpansionState : PlayerState
 
         if (isLevitating)
         {
-            // skill manager cast spells
+            skillsManager.domainExpansion.DoSpellCasting();
 
             if (stateTimer < 0)
             {
+                isLevitating = false;
+                rb.gravityScale = originalGravity;
+
                 stateMachine.ChangeState(player.idleState);
             }
         }
@@ -47,8 +50,6 @@ public class Player_DomainExpansionState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        rb.gravityScale = originalGravity;
-        isLevitating = false;
         createdDomain = false;
     }
 
@@ -58,8 +59,8 @@ public class Player_DomainExpansionState : PlayerState
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0f;
 
-        stateTimer = 2f;
-        //get levitation duration
+        stateTimer = skillsManager.domainExpansion.GetDomainDuration();
+
 
         if (createdDomain == false)
         {
@@ -72,6 +73,6 @@ public class Player_DomainExpansionState : PlayerState
     {
         RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector2.up, player.riseMaxDistance, player.whatIsGround);
 
-        return hit.collider != null ? hit.distance -1 : player.riseMaxDistance;
+        return hit.collider != null ? hit.distance - 1 : player.riseMaxDistance;
     }
 }
