@@ -1484,12 +1484,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2078264012}
-  - {fileID: 273703841}
-  - {fileID: 529447868}
   - {fileID: 24301754}
   - {fileID: 789527308}
   - {fileID: 2068160131}
   - {fileID: 1291762578}
+  - {fileID: 273703841}
+  - {fileID: 529447868}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -21627,11 +21627,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 932190498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f9202feaa09d246a03b8eabb74c33f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fc244b6a98d6034291a1bcbcdbac42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 10
   itemList: []
+  equipList:
+  - slotType: 1
+    equipedItem:
+      itemData: {fileID: 0}
+      stackSize: 0
+  - slotType: 2
+    equipedItem:
+      itemData: {fileID: 0}
+      stackSize: 0
+  - slotType: 3
+    equipedItem:
+      itemData: {fileID: 0}
+      stackSize: 0
 --- !u!1 &942154242
 GameObject:
   m_ObjectHideFlags: 0
@@ -21645,7 +21658,7 @@ GameObject:
   - component: {fileID: 942154244}
   - component: {fileID: 942154243}
   m_Layer: 9
-  m_Name: Object_ItemPickup - Animal Leather
+  m_Name: Object_ItemPickup - Wood Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21741,7 +21754,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -954703288, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
+  m_Sprite: {fileID: -724226969, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -21764,7 +21777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a3748c8b5b403479bcd25a693a9978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: abfb2b2dc264fe045b57bce72a3013df, type: 2}
+  itemData: {fileID: 11400000, guid: 85c2fb3b5cfa16e41bdd182ca1360629, type: 2}
 --- !u!4 &942154246
 Transform:
   m_ObjectHideFlags: 0
@@ -23305,10 +23318,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 577624172}
-  - {fileID: 102207584}
   - {fileID: 1463725140}
   - {fileID: 681816720}
   - {fileID: 1970604671}
+  - {fileID: 102207584}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -28997,9 +29010,9 @@ RectTransform:
   m_Children:
   - {fileID: 849213216}
   - {fileID: 1556668661}
-  - {fileID: 499522735}
   - {fileID: 138700285}
   - {fileID: 1766041140}
+  - {fileID: 499522735}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
