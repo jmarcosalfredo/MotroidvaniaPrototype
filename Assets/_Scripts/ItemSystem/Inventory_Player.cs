@@ -17,6 +17,7 @@ public class Inventory_Player : Inventory_Base
         Inventory_Item inventoryItem = FindItem(item.itemData);
         List<Inventory_EquipmentSlot> matchingSlots = equipList.FindAll(slot => slot.slotType == item.itemData.itemType);
 
+        // TRY TO FIND AN EMPTY SLOT AND EQUIP ITEM
         foreach (var slot in matchingSlots)
         {
             if (slot.HasItem() == false)
@@ -25,6 +26,13 @@ public class Inventory_Player : Inventory_Base
                 return;
             }
         }
+
+        // IF NO EMPTY SLOT, REPLACE FIRST ONE
+        var slotsToReplace = matchingSlots[0];
+        var itemToUnequip = slotsToReplace.equipedItem;
+
+        EquipItem(inventoryItem, slotsToReplace);
+        UnequipItem(itemToUnequip);
     }
 
     private void EquipItem(Inventory_Item itemToEquip, Inventory_EquipmentSlot slot)
@@ -33,5 +41,26 @@ public class Inventory_Player : Inventory_Base
         itemToEquip.AddModifiers(playerStats);
 
         RemoveItem(itemToEquip);
+    }
+
+    public void UnequipItem(Inventory_Item itemToUnequip)
+    {
+        if (CanAddItem() == false)
+        {
+            Debug.Log("Not enough space in inventory to unequip item");
+            return;
+        }
+
+        foreach (var slot in equipList)
+        {
+            if (slot.equipedItem == itemToUnequip)
+            {
+                slot.equipedItem = null;
+                break;
+            }
+        }
+
+        itemToUnequip.RemoveModifiers(playerStats);
+        AddItem(itemToUnequip);
     }
 }
