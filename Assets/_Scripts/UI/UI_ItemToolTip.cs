@@ -30,7 +30,8 @@ public class UI_ItemToolTip : UI_ToolTip
         {
             string modType = GetStatNameByType(mod.statType);
             string modValue = IsPercentageStat(mod.statType) ? mod.value.ToString() + "%" : mod.value.ToString();
-            sb.AppendLine(GetColoredText(mod.value > 0 ? "green" : "red", $"{modType}: {modValue}"));
+            string valueColor = mod.value > 0 ? "green" : "red";
+            sb.AppendLine($"{GetColoredText("white", modType)}: {GetColoredText(valueColor, modValue)}");
         }
 
         return sb.ToString();
