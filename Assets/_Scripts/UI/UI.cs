@@ -2,12 +2,23 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    public UI_SkillToolTip skillToolTip;
-    public UI_ItemToolTip itemToolTip;
-    public UI_StatToolTip statToolTip;
-    
-    public UI_SkillTree skillTree;
+    public UI_SkillToolTip skillToolTip { get; private set; }
+    public UI_ItemToolTip itemToolTip { get; private set; }
+    public UI_StatToolTip statToolTip { get; private set; }
+
+    public UI_SkillTree skillTreeUI { get; private set; }
+    public UI_Inventory inventoryUI { get; private set; }
+
+    [SerializeField] private Animator playerIconAnimator;
+
     private bool skillTreeEnabled;
+    private bool inventoryEnabled;
+
+    private void SetPlayerIconAnimatorState()
+    {
+        if (playerIconAnimator != null)
+            playerIconAnimator.enabled = inventoryEnabled;
+    }
 
     private void Awake()
     {
@@ -15,13 +26,31 @@ public class UI : MonoBehaviour
         skillToolTip = GetComponentInChildren<UI_SkillToolTip>();
         statToolTip = GetComponentInChildren<UI_StatToolTip>();
 
-        skillTree = GetComponentInChildren<UI_SkillTree>(true);
+        skillTreeUI = GetComponentInChildren<UI_SkillTree>(true);
+        inventoryUI = GetComponentInChildren<UI_Inventory>(true);
+
+        if (playerIconAnimator == null)
+            Debug.LogError("UI: playerIconAnimator nao foi atribuido no Inspector.", this);
+
+        skillTreeEnabled = skillTreeUI.gameObject.activeSelf;
+        inventoryEnabled = inventoryUI.gameObject.activeSelf;
+
+        SetPlayerIconAnimatorState();
     }
 
-    public void ToggleSkillTree()
+    public void ToggleSkillTreeUI()
     {
         skillTreeEnabled = !skillTreeEnabled;
-        skillTree.gameObject.SetActive(skillTreeEnabled);
+        skillTreeUI.gameObject.SetActive(skillTreeEnabled);
         skillToolTip.ShowToolTip(false, null);
+    }
+
+    public void ToggleInventoryUI()
+    {
+        inventoryEnabled = !inventoryEnabled;
+        SetPlayerIconAnimatorState();
+        inventoryUI.gameObject.SetActive(inventoryEnabled);
+        statToolTip.ShowToolTip(false, null);
+        itemToolTip.ShowToolTip(false, null);
     }
 }

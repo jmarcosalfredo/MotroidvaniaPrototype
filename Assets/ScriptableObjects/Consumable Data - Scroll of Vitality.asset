@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc8dd87a94c549498455cca72354777, type: 3}
+  m_Name: Consumable Data - Scroll of Vitality
+  m_EditorClassIdentifier: 
+  itemName: Scroll of Vitality
+  itemIcon: {fileID: 84768511, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
+  itemType: 4
+  maxStackSize: 2
+  itemEffect: {fileID: 11400000, guid: ac99d38bd7c6dde47ab362d7ee1ee2fb, type: 2}
