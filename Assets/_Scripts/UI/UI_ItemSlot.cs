@@ -44,7 +44,14 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
             return;
         }
 
-        playerInventory.TryEquipItem(itemInSlot);
+        if (itemInSlot.itemData.itemType == ItemType.Consumable)
+        {
+            playerInventory.TryUseItem(itemInSlot);
+        }
+        else
+        {
+            playerInventory.TryEquipItem(itemInSlot);
+        }
 
         if (itemInSlot == null)
         {
