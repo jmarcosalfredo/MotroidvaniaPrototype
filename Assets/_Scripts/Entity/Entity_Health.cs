@@ -1,9 +1,11 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Entity_Health : MonoBehaviour, IDamageble
 {
+    public event Action OnTakingDamage;
+
     private Entity entity;
     private Slider healthBar;
     private Entity_VFX entityVFX;
@@ -73,6 +75,7 @@ public class Entity_Health : MonoBehaviour, IDamageble
 
         lastDamageTaken = physicalDmgTaken + elementalDmgTaken;
 
+        OnTakingDamage?.Invoke();
         return true;
     }
 
@@ -84,7 +87,7 @@ public class Entity_Health : MonoBehaviour, IDamageble
         if (entityStats == null)
             return false;
         else
-            return Random.Range(0f, 100f) < entityStats.GetEvasion();
+            return UnityEngine.Random.Range(0f, 100f) < entityStats.GetEvasion();
     }
 
     private void RegenerateHealth()

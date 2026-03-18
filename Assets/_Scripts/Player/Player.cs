@@ -10,6 +10,7 @@ public class Player : Entity
     public Player_VFX vfx { get; private set; }
     public Entity_Health health { get; private set; }
     public Entity_StatusHandler statusHandler { get; private set; }
+    public Player_Combat combat { get; private set; }
 
     #region States Variables
 
@@ -61,6 +62,7 @@ public class Player : Entity
         health = GetComponent<Entity_Health>();
         skillManager = GetComponent<Player_SkillManager>();
         statusHandler = GetComponent<Entity_StatusHandler>();
+        combat = GetComponent<Player_Combat>();
 
         input = new PlayerInputSet();
 

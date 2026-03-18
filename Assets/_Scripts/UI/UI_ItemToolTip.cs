@@ -14,10 +14,10 @@ public class UI_ItemToolTip : UI_ToolTip
 
         itemName.text = itemToShow.itemData.itemName;
         itemType.text = itemToShow.itemData.itemType.ToString();
-        itemInfo.text = GetInventoryInfo(itemToShow);
+        itemInfo.text = GetItemInfo(itemToShow);
     }
 
-    public string GetInventoryInfo(Inventory_Item item)
+    public string GetItemInfo(Inventory_Item item)
     {
         if (item.itemData.itemType == ItemType.Material)
         {
@@ -37,6 +37,13 @@ public class UI_ItemToolTip : UI_ToolTip
             string modValue = IsPercentageStat(mod.statType) ? mod.value.ToString() + "%" : mod.value.ToString();
             string valueColor = mod.value > 0 ? "green" : "red";
             sb.AppendLine($"{GetColoredText("white", modType)}: {GetColoredText(valueColor, modValue)}");
+        }
+
+        if (item.itemEffect != null)
+        {
+            sb.AppendLine("");
+            sb.AppendLine("Unique effect:");
+            sb.AppendLine(item.itemEffect.effectDescription);   
         }
 
         return sb.ToString();
