@@ -104,6 +104,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "1251ddb4-4152-4ab2-afcf-e7f2175a7e9a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -220,7 +229,7 @@
                 {
                     "name": "",
                     "id": "39f8bfe4-1af6-4a0f-90a9-af93e55b9af7",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyBoard & Mouse",
@@ -269,6 +278,17 @@
                     "processors": "",
                     "groups": ";KeyBoard & Mouse",
                     "action": "ToggleInventoryUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ba238be-b1d9-40bd-8b34-eb5deed5db53",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoard & Mouse",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2ec26f578094d19429a6aad280c62409
+guid: cf3b8f4516e958f41a3a9135af30ce60
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5457132565505971404
-    second: artdecoUI_PIPO_wb_0
+      213: 5208860709715189653
+    second: Merchant Wagon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: artdecoUI_PIPO_wb_0
+      name: Merchant Wagon_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 614
-        width: 389
-        height: 274
+        x: 127
+        y: 213
+        width: 796
+        height: 547
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,30 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc4133bb721abbb40800000000000000
-      internalID: 5457132565505971404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: artdecoUI_PIPO_wb_1
-      rect:
-        serializedVersion: 2
-        x: 1073
-        y: 583
-        width: 48
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 319a13511f4f06441992c58c30eea52f
-      internalID: 1215437136
+      spriteID: 59f101fb737994840800000000000000
+      internalID: 5208860709715189653
       vertices: []
       indices: 
       edges: []
@@ -173,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1879e06c37c0cb34a96745ee3e126b45
+    spriteID: 826d14b658324944686f0ef669a66bea
     internalID: 0
     vertices: []
     indices: 
@@ -183,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      artdecoUI_PIPO_wb_0: 5457132565505971404
-      artdecoUI_PIPO_wb_1: 1215437136
+      Merchant Wagon_0: 5208860709715189653
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

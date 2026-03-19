@@ -192,7 +192,6 @@ public class Entity_Stats : MonoBehaviour
                 return defense.lightningRes;
                 
             default:
-                Debug.LogWarning($"StatType {type} not found!");
                 return null;
         }
     }

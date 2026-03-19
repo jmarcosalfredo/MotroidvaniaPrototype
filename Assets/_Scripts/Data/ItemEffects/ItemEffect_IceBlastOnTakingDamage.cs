@@ -11,7 +11,7 @@ public class ItemEffect_IceBlastOnTakingDamage : ItemEffectDataSO
     [Space]
     [SerializeField] private float healthPercentTrigger = 0.25f;
     [SerializeField] private float cooldown;
-    private float lastTimeUsed = -999f;
+    private float lastTimeUsed = 0;
 
     [Header("Vfx Objects")]
     [SerializeField] private GameObject iceBlastVfx;
