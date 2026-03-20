@@ -16,6 +16,14 @@ MonoBehaviour:
   itemIcon: {fileID: -724226969, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
   itemType: 1
   maxStackSize: 1
+  itemEffect: {fileID: 0}
+  craftRecipe:
+  - itemData: {fileID: 11400000, guid: 100feb027d5354748addfc96316e5728, type: 2}
+    stackSize: 3
+    itemEffect: {fileID: 0}
+  - itemData: {fileID: 11400000, guid: abfb2b2dc264fe045b57bce72a3013df, type: 2}
+    stackSize: 2
+    itemEffect: {fileID: 0}
   modifiers:
   - statType: 7
     value: 4
