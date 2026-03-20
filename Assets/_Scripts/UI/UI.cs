@@ -40,6 +40,13 @@ public class UI : MonoBehaviour
         SetPlayerIconAnimatorState();
     }
 
+    public void SwitchOffAllToolTips()
+    {
+        itemToolTip.ShowToolTip(false, null);
+        skillToolTip.ShowToolTip(false, null);
+        statToolTip.ShowToolTip(false, null);
+    }
+
     public void ToggleSkillTreeUI()
     {
         skillTreeEnabled = !skillTreeEnabled;

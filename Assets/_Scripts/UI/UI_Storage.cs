@@ -7,6 +7,7 @@ public class UI_Storage : MonoBehaviour
 
     [SerializeField] private UI_ItemSlotParent playerInventorySlotsParent;
     [SerializeField] private UI_ItemSlotParent storageSlotsParent;
+    [SerializeField] private UI_ItemSlotParent materialStashSlotsParent;
 
     public void SetupStorage(Inventory_Player inventoryPlayer, Inventory_Storage storage)
     {
@@ -27,5 +28,6 @@ public class UI_Storage : MonoBehaviour
     {
         playerInventorySlotsParent.UpdateSlots(inventoryPlayer.itemList);
         storageSlotsParent.UpdateSlots(storage.itemList);
+        materialStashSlotsParent.UpdateSlots(storage.materialStash);
     }
 }
