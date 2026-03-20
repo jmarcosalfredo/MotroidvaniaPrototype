@@ -156,8 +156,8 @@ TextureImporter:
         width: 48
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 14, z: 14, w: 14}
       customData: 
       outline: []
       physicsShape: []
@@ -185,6 +185,7 @@ TextureImporter:
     nameFileIdTable:
       artdecoUI_PIPO_wb_0: 5457132565505971404
       artdecoUI_PIPO_wb_1: 1215437136
+      artdecoUI_PIPO_wb_2: 568897324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
