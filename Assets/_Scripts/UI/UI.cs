@@ -10,6 +10,7 @@ public class UI : MonoBehaviour
     public UI_Inventory inventoryUI { get; private set; }
     public UI_Storage storageUI { get; private set; }
     public UI_Craft craftUI { get; private set; }
+    public UI_Merchant merchantUI { get; private set; }
 
     [SerializeField] private Animator playerIconAnimator;
 
@@ -32,6 +33,7 @@ public class UI : MonoBehaviour
         inventoryUI = GetComponentInChildren<UI_Inventory>(true);
         storageUI = GetComponentInChildren<UI_Storage>(true);
         craftUI = GetComponentInChildren<UI_Craft>(true);
+        merchantUI = GetComponentInChildren<UI_Merchant>(true);
 
         if (playerIconAnimator == null)
             Debug.LogError("UI: playerIconAnimator nao foi atribuido no Inspector.", this);

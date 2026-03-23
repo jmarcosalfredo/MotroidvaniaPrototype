@@ -23,7 +23,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         playerInventory = FindAnyObjectByType<Inventory_Player>();
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (itemInSlot == null)
         {

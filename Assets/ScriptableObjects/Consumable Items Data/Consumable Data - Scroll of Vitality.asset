@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc8dd87a94c549498455cca72354777, type: 3}
   m_Name: Consumable Data - Scroll of Vitality
   m_EditorClassIdentifier: 
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 2
+  craftRecipe: []
   itemName: Scroll of Vitality
   itemIcon: {fileID: 84768511, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
   itemType: 4
