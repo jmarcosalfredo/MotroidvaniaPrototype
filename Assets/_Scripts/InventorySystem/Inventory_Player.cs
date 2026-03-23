@@ -18,7 +18,7 @@ public class Inventory_Player : Inventory_Base
 
     public void TryEquipItem(Inventory_Item item)
     {
-        Inventory_Item inventoryItem = FindItem(item.itemData);
+        Inventory_Item inventoryItem = FindItem(item);
         List<Inventory_EquipmentSlot> matchingSlots = equipList.FindAll(slot => slot.slotType == item.itemData.itemType);
 
         // TRY TO FIND AN EMPTY SLOT AND EQUIP ITEM
@@ -53,7 +53,7 @@ public class Inventory_Player : Inventory_Base
 
     public void UnequipItem(Inventory_Item itemToUnequip, bool replacingItem = false)
     {
-        if (CanAddItem(itemToUnequip) == false)
+        if (CanAddItem(itemToUnequip) == false  && replacingItem == false)
         {
             Debug.Log("Not enough space in inventory to unequip item");
             return;

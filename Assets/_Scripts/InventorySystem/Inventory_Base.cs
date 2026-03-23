@@ -99,9 +99,9 @@ public class Inventory_Base : MonoBehaviour
         }
     }
 
-    public Inventory_Item FindItem(ItemDataSO itemData)
+    public Inventory_Item FindItem(Inventory_Item itemToFind)
     {
-        return itemList.Find(item => item.itemData == itemData);
+        return itemList.Find(item => item == itemToFind);
     }
 
     public void TriggerUpdateUI()
