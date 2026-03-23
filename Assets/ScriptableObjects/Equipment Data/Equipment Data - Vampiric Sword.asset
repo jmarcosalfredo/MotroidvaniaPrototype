@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ccdcb7bb8123f4698a29eb4e902a66, type: 3}
   m_Name: Equipment Data - Vampiric Sword
   m_EditorClassIdentifier: 
-  itemName: Vampiric Sword
-  itemIcon: {fileID: -1196114170, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
-  itemType: 1
-  maxStackSize: 1
-  itemEffect: {fileID: 11400000, guid: 8cd1930b7bdaada438b4e3e40b6235f2, type: 2}
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 1
+  itemRarity: 652
+  dropChance: 34.9
+  maxDropChance: 100
   craftRecipe:
   - itemData: {fileID: 11400000, guid: 85c2fb3b5cfa16e41bdd182ca1360629, type: 2}
     stackSize: 1
@@ -24,6 +25,11 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: cacdbf727cc87b24e82a7c179172045e, type: 2}
     stackSize: 1
     itemEffect: {fileID: 0}
+  itemName: Vampiric Sword
+  itemIcon: {fileID: -1196114170, guid: fdf31e12f63df7f4db2233dcb84d94d4, type: 3}
+  itemType: 1
+  maxStackSize: 1
+  itemEffect: {fileID: 11400000, guid: 8cd1930b7bdaada438b4e3e40b6235f2, type: 2}
   modifiers:
   - statType: 7
     value: 35

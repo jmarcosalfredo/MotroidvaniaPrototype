@@ -10,6 +10,7 @@ public class Entity_Health : MonoBehaviour, IDamageble
     private Slider healthBar;
     private Entity_VFX entityVFX;
     private Entity_Stats entityStats;
+    private Entity_DropManager dropManager;
 
     [SerializeField] protected float currentHealth;
     [Header("Health Regen")]
@@ -34,6 +35,7 @@ public class Entity_Health : MonoBehaviour, IDamageble
         entityVFX = GetComponent<Entity_VFX>();
         entityStats = GetComponent<Entity_Stats>();
         healthBar = GetComponentInChildren<Slider>();
+        dropManager = GetComponent<Entity_DropManager>();
 
         SetupHealth();
     }
@@ -131,7 +133,8 @@ public class Entity_Health : MonoBehaviour, IDamageble
     protected virtual void Die()
     {
         isDead = true;
-        entity.EntityDeath();
+        entity?.EntityDeath();
+        dropManager?.DropItems();
     }
 
     public float GetHealthPercent()
