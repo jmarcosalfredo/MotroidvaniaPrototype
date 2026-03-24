@@ -5,7 +5,7 @@ public class Skill_Base : MonoBehaviour
     public Player_SkillManager skillManager { get; private set; }
     public Player player { get; private set; }
 
-    public ScaleEffectData damageScaleData {get; private set;}
+    public ScaleEffectData damageScaleData { get; private set; }
 
     [Header("General Details")]
     [SerializeField] protected SkillType skillType;
@@ -23,20 +23,24 @@ public class Skill_Base : MonoBehaviour
 
     public virtual void TryUseSkill()
     {
-        
+
     }
 
-    public void SetSkillUpgrade (UpgradeData upgrade)
+    public void SetSkillUpgrade(Skill_DataSO skillData)
     {
+        UpgradeData upgrade = skillData.upgradeData;
         upgradeType = upgrade.upgradeType;
         cooldown = upgrade.cooldown;
         damageScaleData = upgrade.damageScale;
+
+        player.ui.inGameUI.GetSkillSlot(skillType).SetupSkillSlot(skillData);
+
         ResetCooldown();
     }
 
     public virtual bool CanUseSkill()
     {
-        if(upgradeType == SkillUpgradeType.None)
+        if (upgradeType == SkillUpgradeType.None)
         {
             return false;
         }
@@ -53,7 +57,15 @@ public class Skill_Base : MonoBehaviour
     protected bool Unlocked(SkillUpgradeType upgradeToCheck) => upgradeType == upgradeToCheck;
 
     protected bool OnCooldown() => Time.time < lastTimeUsed + cooldown;
-    public void SetSkillOnCooldown() => lastTimeUsed = Time.time;
+    public void SetSkillOnCooldown()
+    {
+        player.ui.inGameUI.GetSkillSlot(skillType).StartCooldown(cooldown);
+        lastTimeUsed = Time.time;
+    }
     public void ReduceCooldownBy(float cooldownReduction) => lastTimeUsed += cooldownReduction;
-    public void ResetCooldown() => lastTimeUsed = Time.time - cooldown;
+    public void ResetCooldown()
+    {
+        player.ui.inGameUI.GetSkillSlot(skillType).ResetCooldown();
+        lastTimeUsed = Time.time - cooldown;
+    }
 }
