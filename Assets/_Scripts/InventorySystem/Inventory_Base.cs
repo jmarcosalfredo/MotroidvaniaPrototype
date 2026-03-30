@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory_Base : MonoBehaviour
 {
+    protected Player player;
     public event Action OnInventoryChange;
 
     public int maxInventorySize = 10;
@@ -11,7 +12,7 @@ public class Inventory_Base : MonoBehaviour
 
     protected virtual void Awake()
     {
-
+        player = GetComponent<Player>();
     }
 
     public void TryUseItem(Inventory_Item itemToUse)
@@ -19,6 +20,11 @@ public class Inventory_Base : MonoBehaviour
         Inventory_Item consumable = itemList.Find(item => item == itemToUse);
 
         if (consumable == null)
+        {
+            return;
+        }
+
+        if (consumable.itemEffect.CanBeUsed(player) == false)
         {
             return;
         }
@@ -86,7 +92,7 @@ public class Inventory_Base : MonoBehaviour
         {
             itemList.Remove(itemInInventory);
         }
-        
+
 
         OnInventoryChange?.Invoke();
     }
@@ -99,9 +105,14 @@ public class Inventory_Base : MonoBehaviour
         }
     }
 
-    public Inventory_Item FindItem(Inventory_Item itemToFind)
+    public Inventory_Item FindItem(Inventory_Item itemToFind) // Finds the exact item instance in the inventory
     {
         return itemList.Find(item => item == itemToFind);
+    }
+
+    public Inventory_Item FindSameItem(Inventory_Item intemToFind) // Finds an item in the inventory with the same itemData as the given item
+    {
+        return itemList.Find(item => item.itemData == intemToFind.itemData);
     }
 
     public void TriggerUpdateUI()

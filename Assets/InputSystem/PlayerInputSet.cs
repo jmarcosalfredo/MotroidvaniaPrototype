@@ -199,6 +199,24 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickItemSlot_1"",
+                    ""type"": ""Button"",
+                    ""id"": ""7066ee54-7f8f-4e9a-bc2b-2e19c6b5df3f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickItemSlot_2"",
+                    ""type"": ""Button"",
+                    ""id"": ""4fc5e0bb-8b25-47ed-8c76-bd26603e1e11"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -377,6 +395,28 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43bfc3a7-26d6-4865-85a0-5b4ec56502b1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyBoard & Mouse"",
+                    ""action"": ""QuickItemSlot_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65e98b48-3e3e-417f-856b-c9e39d89fb4a"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyBoard & Mouse"",
+                    ""action"": ""QuickItemSlot_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -414,6 +454,8 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         m_Player_UltimateSpell = m_Player.FindAction("UltimateSpell", throwIfNotFound: true);
         m_Player_ToggleInventoryUI = m_Player.FindAction("ToggleInventoryUI", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_QuickItemSlot_1 = m_Player.FindAction("QuickItemSlot_1", throwIfNotFound: true);
+        m_Player_QuickItemSlot_2 = m_Player.FindAction("QuickItemSlot_2", throwIfNotFound: true);
     }
 
     ~@PlayerInputSet()
@@ -506,6 +548,8 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_UltimateSpell;
     private readonly InputAction m_Player_ToggleInventoryUI;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_QuickItemSlot_1;
+    private readonly InputAction m_Player_QuickItemSlot_2;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -565,6 +609,14 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/QuickItemSlot_1".
+        /// </summary>
+        public InputAction @QuickItemSlot_1 => m_Wrapper.m_Player_QuickItemSlot_1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/QuickItemSlot_2".
+        /// </summary>
+        public InputAction @QuickItemSlot_2 => m_Wrapper.m_Player_QuickItemSlot_2;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -627,6 +679,12 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @QuickItemSlot_1.started += instance.OnQuickItemSlot_1;
+            @QuickItemSlot_1.performed += instance.OnQuickItemSlot_1;
+            @QuickItemSlot_1.canceled += instance.OnQuickItemSlot_1;
+            @QuickItemSlot_2.started += instance.OnQuickItemSlot_2;
+            @QuickItemSlot_2.performed += instance.OnQuickItemSlot_2;
+            @QuickItemSlot_2.canceled += instance.OnQuickItemSlot_2;
         }
 
         /// <summary>
@@ -674,6 +732,12 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @QuickItemSlot_1.started -= instance.OnQuickItemSlot_1;
+            @QuickItemSlot_1.performed -= instance.OnQuickItemSlot_1;
+            @QuickItemSlot_1.canceled -= instance.OnQuickItemSlot_1;
+            @QuickItemSlot_2.started -= instance.OnQuickItemSlot_2;
+            @QuickItemSlot_2.performed -= instance.OnQuickItemSlot_2;
+            @QuickItemSlot_2.canceled -= instance.OnQuickItemSlot_2;
         }
 
         /// <summary>
@@ -811,5 +875,19 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "QuickItemSlot_1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnQuickItemSlot_1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "QuickItemSlot_2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnQuickItemSlot_2(InputAction.CallbackContext context);
     }
 }
