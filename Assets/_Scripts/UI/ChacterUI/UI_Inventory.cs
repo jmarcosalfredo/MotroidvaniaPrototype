@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class UI_Inventory : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class UI_Inventory : MonoBehaviour
 
     [SerializeField] private UI_ItemSlotParent inventorySlotsParent;
     [SerializeField] private UI_EquipSlotParent equipSlotParent;
+    [SerializeField] private TextMeshProUGUI goldAmountText;
 
     private void Awake()
     {
@@ -20,5 +23,6 @@ public class UI_Inventory : MonoBehaviour
     {
         inventorySlotsParent.UpdateSlots(inventory.itemList);
         equipSlotParent.UpdateEuipmentSlots(inventory.equipList);
+        goldAmountText.text = inventory.gold.ToString("N0") + "g.";
     }
 }
