@@ -70,6 +70,7 @@ public class Player : Entity
         stats = GetComponent<Player_Stats>();
 
         input = new PlayerInputSet();
+        ui.SetupControllsUI(input);
 
         idleState = new Player_IdleState(stateMachine, "idle", this);
         moveState = new Player_MoveState(stateMachine, "move", this);
@@ -195,9 +196,6 @@ public class Player : Entity
 
         input.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
-
-        input.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
-        input.Player.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
 
         input.Player.Interact.performed += ctx => TryInteract();
 

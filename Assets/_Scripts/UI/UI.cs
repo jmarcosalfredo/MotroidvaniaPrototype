@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    [SerializeField] private GameObject[] uiElements;
+    public bool alternativeInput { get; private set; }
+    private PlayerInputSet input;
+
     #region UI Components
     public UI_SkillToolTip skillToolTip { get; private set; }
     public UI_ItemToolTip itemToolTip { get; private set; }
@@ -13,6 +17,7 @@ public class UI : MonoBehaviour
     public UI_Craft craftUI { get; private set; }
     public UI_Merchant merchantUI { get; private set; }
     public UI_InGame inGameUI { get; private set; }
+    public UI_Options optionsUI { get; private set; }
     #endregion
 
     [SerializeField] private Animator playerIconAnimator;
@@ -38,6 +43,7 @@ public class UI : MonoBehaviour
         craftUI = GetComponentInChildren<UI_Craft>(true);
         merchantUI = GetComponentInChildren<UI_Merchant>(true);
         inGameUI = GetComponentInChildren<UI_InGame>(true);
+        optionsUI = GetComponentInChildren<UI_Options>(true);
 
         if (playerIconAnimator == null)
             Debug.LogError("UI: playerIconAnimator nao foi atribuido no Inspector.", this);
@@ -53,26 +59,146 @@ public class UI : MonoBehaviour
         skillTreeUI.UnlockDefaultSkills();
     }
 
-    public void SwitchOffAllToolTips()
+    public void SetupControllsUI(PlayerInputSet inputSet)
     {
-        itemToolTip.ShowToolTip(false, null);
-        skillToolTip.ShowToolTip(false, null);
-        statToolTip.ShowToolTip(false, null);
+        input = inputSet;
+
+        input.UI.SkillTreeUI.performed += ctx => ToggleSkillTreeUI();
+        input.UI.InventoryUI.performed += ctx => ToggleInventoryUI();
+
+        input.UI.AlternativeInput.performed += ctx => alternativeInput = true;
+        input.UI.AlternativeInput.canceled += ctx => alternativeInput = false;
+
+        input.UI.OptionsUI.performed += ctx =>
+        {
+            foreach (var element in uiElements)
+            {
+                if (element.activeSelf)
+                {
+                    Time.timeScale = 1f;
+                    SwitchToInGameUI();
+                    return;
+                }
+            }
+
+            Time.timeScale = 0f;
+            OpenOptionsUI();
+        };
+    }
+
+    public void OpenOptionsUI()
+    {
+        foreach (var element in uiElements)
+        {
+            element.gameObject.SetActive(false);
+        }
+
+        HideAllToolTips();
+        StopPlayerControls(true);
+        optionsUI.gameObject.SetActive(true);
+    }
+
+    public void SwitchToInGameUI()
+    {
+        foreach (var element in uiElements)
+        {
+            element.gameObject.SetActive(false);
+        }
+
+        HideAllToolTips();
+        StopPlayerControls(false);
+        inGameUI.gameObject.SetActive(true);
+
+        skillTreeEnabled = false;
+        inventoryEnabled = false;
+        SetPlayerIconAnimatorState();
+    }
+
+    public void StopPlayerControls(bool stopControls)
+    {
+        if (stopControls)
+        {
+            input.Player.Disable();
+        }
+        else
+        {
+            input.Player.Enable();
+        }
+    }
+
+    public void StopPlayerControlsIfNeeded()
+    {
+        foreach (var elements in uiElements)
+        {
+            if (elements.activeSelf)
+            {
+                StopPlayerControls(true);
+                return;
+            }
+        }
+
+        StopPlayerControls(false);
     }
 
     public void ToggleSkillTreeUI()
     {
+        skillTreeUI.transform.SetAsLastSibling();
+        SetTooltipsAsLastSibling();
+
         skillTreeEnabled = !skillTreeEnabled;
         skillTreeUI.gameObject.SetActive(skillTreeEnabled);
-        skillToolTip.ShowToolTip(false, null);
+        HideAllToolTips();
+
+        StopPlayerControlsIfNeeded();
     }
 
     public void ToggleInventoryUI()
     {
+        inventoryUI.transform.SetAsLastSibling();
+        SetTooltipsAsLastSibling();
+
         inventoryEnabled = !inventoryEnabled;
         SetPlayerIconAnimatorState();
         inventoryUI.gameObject.SetActive(inventoryEnabled);
-        statToolTip.ShowToolTip(false, null);
+        HideAllToolTips();
+
+        StopPlayerControlsIfNeeded();
+    }
+
+    public void OpenStorageUI(bool openStorageUI)
+    {
+        storageUI.gameObject.SetActive(openStorageUI);
+        StopPlayerControls(openStorageUI);
+
+        if (openStorageUI == false)
+        {
+            craftUI.gameObject.SetActive(false);
+            HideAllToolTips();
+        }
+    }
+
+    public void OpenMerchantUI(bool openMerchantUI)
+    {
+        merchantUI.gameObject.SetActive(openMerchantUI);
+        StopPlayerControls(openMerchantUI);
+
+        if (openMerchantUI == false)
+        {
+            HideAllToolTips();
+        }
+    }
+
+    public void HideAllToolTips()
+    {
         itemToolTip.ShowToolTip(false, null);
+        skillToolTip.ShowToolTip(false, null);
+        statToolTip.ShowToolTip(false, null);
+    }
+
+    private void SetTooltipsAsLastSibling()
+    {
+        itemToolTip.transform.SetAsLastSibling();
+        skillToolTip.transform.SetAsLastSibling();
+        statToolTip.transform.SetAsLastSibling();
     }
 }
