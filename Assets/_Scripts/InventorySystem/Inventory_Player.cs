@@ -5,13 +5,16 @@ using UnityEngine;
 public class Inventory_Player : Inventory_Base
 {
     public event Action<int> OnQuickSlotUsed;
-    public int gold = 10000;
+    [SerializeField] private ItemListDataSO itemDataBase;
 
     public List<Inventory_EquipmentSlot> equipList;
     public Inventory_Storage storage { get; private set; }
 
     [Header("Quick Item Slots")]
     public Inventory_Item[] quickItems = new Inventory_Item[2];
+
+    [Header("Gold Info")]
+    public int gold = 10000;
 
     protected override void Awake()
     {
@@ -83,7 +86,7 @@ public class Inventory_Player : Inventory_Base
 
     public void UnequipItem(Inventory_Item itemToUnequip, bool replacingItem = false)
     {
-        if (CanAddItem(itemToUnequip) == false  && replacingItem == false)
+        if (CanAddItem(itemToUnequip) == false && replacingItem == false)
         {
             Debug.Log("Not enough space in inventory to unequip item");
             return;
@@ -108,10 +111,49 @@ public class Inventory_Player : Inventory_Base
     public override void SaveData(ref GameData data)
     {
         data.gold = gold;
+        data.inventory.Clear();
+
+        foreach (var item in itemList)
+        {
+            if (item != null && item.itemData != null)
+            {
+                string saveID = item.itemData.saveId;
+
+                if (data.inventory.ContainsKey(saveID) == false)
+                {
+                    data.inventory[saveID] = 0;
+                }
+
+                data.inventory[saveID] += item.stackSize;
+            }
+        }
     }
 
     public override void LoadData(GameData data)
     {
         gold = data.gold;
+
+        foreach (var item in data.inventory)
+        {
+            string saveID = item.Key;
+            int stackSize = item.Value;
+
+            ItemDataSO itemData = itemDataBase.GetItemData(saveID);
+
+            if (itemData == null)
+            {
+                Debug.LogWarning("Item with SaveID " + saveID + " not found in ItemDataBase. Skipping item. MAYBE NEED TO REFRESH ITEM DATABASE!");
+                continue;
+            }
+
+            for (int i = 0; i < stackSize; i++)
+            {
+                Inventory_Item itemToLoad = new Inventory_Item(itemData);
+                itemList.Add(itemToLoad);
+            }
+
+        }
+
+        TriggerUpdateUI();
     }
 }

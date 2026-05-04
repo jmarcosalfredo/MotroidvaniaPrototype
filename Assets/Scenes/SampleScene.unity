@@ -59792,7 +59792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxInventorySize: 10
   itemList: []
-  gold: 10000
+  itemDataBase: {fileID: 11400000, guid: 39c204da0cbcf2346b84b023ab3bf3cb, type: 2}
   equipList:
   - slotType: 1
     equipedItem:
@@ -59821,6 +59821,7 @@ MonoBehaviour:
   - itemData: {fileID: 0}
     stackSize: 0
     itemEffect: {fileID: 0}
+  gold: 10000
 --- !u!114 &932190512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66183,7 +66184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: gameData.json
-  encryptData: 1
+  encryptData: 0
 --- !u!4 &1058101686
 Transform:
   m_ObjectHideFlags: 0

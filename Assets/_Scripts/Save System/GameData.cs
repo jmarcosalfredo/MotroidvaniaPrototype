@@ -5,4 +5,11 @@ using UnityEngine;
 public class GameData
 {
     public int gold;
+    public SerializableDictionary<string, int> inventory;
+
+    public GameData()
+    {
+        inventory = new SerializableDictionary<string, int>();
+    }
+
 }
