@@ -15,10 +15,10 @@ public class Inventory_Storage : Inventory_Base
 
     public bool CanCraftItem(Inventory_Item itemToCraft)
     {
-       return HasEnoughMaterials(itemToCraft) && playerInventory.CanAddItem(itemToCraft);
+        return HasEnoughMaterials(itemToCraft) && playerInventory.CanAddItem(itemToCraft);
     }
 
-    private void ConsumeMaterial (Inventory_Item itemToCraft)
+    private void ConsumeMaterial(Inventory_Item itemToCraft)
     {
         foreach (var requiredItem in itemToCraft.itemData.craftRecipe)
         {
@@ -26,7 +26,7 @@ public class Inventory_Storage : Inventory_Base
 
             amoutToConsume = amoutToConsume - ConsumedMaterialsAmount(playerInventory.itemList, requiredItem);
 
-            if(amoutToConsume > 0)
+            if (amoutToConsume > 0)
             {
                 amoutToConsume = amoutToConsume - ConsumedMaterialsAmount(itemList, requiredItem);
             }
@@ -45,7 +45,7 @@ public class Inventory_Storage : Inventory_Base
 
         foreach (var item in itemList)
         {
-            if(item.itemData != neededItem.itemData)
+            if (item.itemData != neededItem.itemData)
             {
                 continue;
             }
@@ -54,7 +54,7 @@ public class Inventory_Storage : Inventory_Base
             item.stackSize -= removeAmount;
             consumedAmount += removeAmount;
 
-            if(item.stackSize <= 0)
+            if (item.stackSize <= 0)
             {
                 itemList.Remove(item);
             }
@@ -87,7 +87,7 @@ public class Inventory_Storage : Inventory_Base
 
         foreach (var item in playerInventory.itemList)
         {
-            if(item.itemData == requiredItem)
+            if (item.itemData == requiredItem)
             {
                 amount += item.stackSize;
             }
@@ -103,7 +103,7 @@ public class Inventory_Storage : Inventory_Base
 
         foreach (var item in materialStash)
         {
-            if(item.itemData == requiredItem)
+            if (item.itemData == requiredItem)
             {
                 amount += item.stackSize;
             }
@@ -159,7 +159,7 @@ public class Inventory_Storage : Inventory_Base
     public void FromStorageToPlayer(Inventory_Item item, bool transferFullStack)
     {
         int transferAmount = transferFullStack ? item.stackSize : 1;
-        
+
         for (int i = 0; i < transferAmount; i++)
         {
             if (playerInventory.CanAddItem(item))
@@ -172,5 +172,92 @@ public class Inventory_Storage : Inventory_Base
         }
 
         TriggerUpdateUI();
+    }
+
+    public override void SaveData(ref GameData data)
+    {
+        base.SaveData(ref data);
+
+        data.storageItems.Clear();
+
+        foreach (var item in itemList)
+        {
+            if (item != null && item.itemData != null)
+            {
+                string saveId = item.itemData.saveId;
+
+                if (data.storageItems.ContainsKey(saveId) == false)
+                {
+                    data.storageItems[saveId] = 0;
+                }
+
+                data.storageItems[saveId] += item.stackSize;
+            }
+        }
+
+        data.storageMaterials.Clear();
+
+        foreach (var item in materialStash)
+        {
+            if (item != null && item.itemData != null)
+            {
+                string saveId = item.itemData.saveId;
+
+                if (data.storageMaterials.ContainsKey(saveId) == false)
+                {
+                    data.storageMaterials[saveId] = 0;
+                }
+
+                data.storageMaterials[saveId] += item.stackSize;
+            }
+        }
+    }
+
+    public override void LoadData(GameData data)
+    {
+        itemList.Clear();
+        materialStash.Clear();
+
+        foreach (var entry in data.storageItems)
+        {
+            string saveId = entry.Key;
+            int stackSize = entry.Value;
+
+            ItemDataSO itemData = itemDataBase.GetItemData(saveId);
+
+            if (itemData == null)
+            {
+                Debug.LogWarning("Item with SaveID " + saveId + " not found in ItemDataBase. Skipping item. MAYBE NEED TO REFRESH ITEM DATABASE!");
+                continue;
+            }
+
+            Inventory_Item itemToLoad = new Inventory_Item(itemData);
+
+            for (int i = 0; i < stackSize; i++)
+            {
+                AddItem(itemToLoad);
+            }
+        }
+
+        foreach (var entry in data.storageMaterials)
+        {
+            string saveID = entry.Key;
+            int stackSize = entry.Value;
+
+            ItemDataSO itemData = itemDataBase.GetItemData(saveID);
+
+            if (itemData == null)
+            {
+                Debug.LogWarning("Item with SaveID " + saveID + " not found in ItemDataBase. Skipping item. MAYBE NEED TO REFRESH ITEM DATABASE!");
+                continue;
+            }
+
+            Inventory_Item itemToLoad = new Inventory_Item(itemData);
+
+            for (int i = 0; i < stackSize; i++)
+            {
+                AddMaterialToStash(itemToLoad);
+            }
+        }
     }
 }

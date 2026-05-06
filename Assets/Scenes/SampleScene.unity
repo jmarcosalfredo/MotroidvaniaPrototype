@@ -4733,6 +4733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxInventorySize: 10
   itemList: []
+  itemDataBase: {fileID: 11400000, guid: 39c204da0cbcf2346b84b023ab3bf3cb, type: 2}
   materialStash: []
 --- !u!1 &82287826
 GameObject:
@@ -8052,12 +8053,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2078264012}
-  - {fileID: 24301754}
-  - {fileID: 789527308}
   - {fileID: 2068160131}
   - {fileID: 1291762578}
   - {fileID: 273703841}
   - {fileID: 529447868}
+  - {fileID: 24301754}
+  - {fileID: 789527308}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -50193,6 +50194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxInventorySize: 36
   itemList: []
+  itemDataBase: {fileID: 11400000, guid: 39c204da0cbcf2346b84b023ab3bf3cb, type: 2}
   shopListData: {fileID: 11400000, guid: 4ef35d8c67dba554ca37041f3dc1a8a2, type: 2}
   minItemsAmount: 4
 --- !u!1 &731671931
@@ -67113,10 +67115,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 577624172}
+  - {fileID: 102207584}
+  - {fileID: 1970604671}
   - {fileID: 1463725140}
   - {fileID: 681816720}
-  - {fileID: 1970604671}
-  - {fileID: 102207584}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -93615,10 +93617,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 849213216}
-  - {fileID: 1556668661}
+  - {fileID: 499522735}
   - {fileID: 138700285}
   - {fileID: 1766041140}
-  - {fileID: 499522735}
+  - {fileID: 1556668661}
   m_Father: {fileID: 514274715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
