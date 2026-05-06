@@ -154,9 +154,10 @@ public class Inventory_Player : Inventory_Base
                 continue;
             }
 
+            Inventory_Item itemToLoad = new Inventory_Item(itemData);
+
             for (int i = 0; i < stackSize; i++)
             {
-                Inventory_Item itemToLoad = new Inventory_Item(itemData);
                 AddItem(itemToLoad);
             }
         }
@@ -169,7 +170,7 @@ public class Inventory_Player : Inventory_Base
             ItemDataSO itemData = itemDataBase.GetItemData(saveId);
             Inventory_Item itemToLoad = new Inventory_Item(itemData);
 
-            var slot = equipList.Find( slot => slot.slotType == loadedSlotType && slot.HasItem() == false);
+            var slot = equipList.Find(slot => slot.slotType == loadedSlotType && slot.HasItem() == false);
 
             slot.equipedItem = itemToLoad;
             slot.equipedItem.AddModifiers(player.stats);
