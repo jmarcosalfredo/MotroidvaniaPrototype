@@ -20,6 +20,11 @@ public class UI_InGame : MonoBehaviour
     private UI_QuickItemSlotOption[] quickItemOptions;
     private UI_QuickItemSlot[] quickItemSlots;
 
+    private void Awake()
+    {
+        skillSlots = GetComponentsInChildren<UI_SkillSlot>(true);
+    }
+
     private void Start()
     {
         quickItemSlots = GetComponentsInChildren<UI_QuickItemSlot>();
@@ -28,7 +33,6 @@ public class UI_InGame : MonoBehaviour
         player.health.OnHealthUpdate += UpdateHealthBar;
         UpdateHealthBar();
 
-        skillSlots = GetComponentsInChildren<UI_SkillSlot>(true);
         inventory = player.inventory;
         inventory.OnInventoryChange += UpdateQuickSlotsUI;
         inventory.OnQuickSlotUsed += PlayQuickSlotFeedback;
