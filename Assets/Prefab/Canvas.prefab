@@ -79937,7 +79937,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: e572222456e03b84da14a92a157dbbad, type: 2}
   skillName: Time Shard
   skillIcon: {fileID: 5381704663242945254}
-  skillCost: 0
+  skillCost: 1
   lockedColor: {r: 0.62352943, g: 0.5921569, b: 0.5921569, a: 1}
 --- !u!114 &2937897003835679303
 MonoBehaviour:
