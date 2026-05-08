@@ -16,8 +16,11 @@ public class GameData
     public SerializableDictionary<SkillType, SkillUpgradeType> skillUpgrades; // Key: SkillType, Value: SkillUpgradeType
 
     public SerializableDictionary<string, bool> unlockedCheckpoints; // Key: checkpoint ID, Value: isUnlocked
+    public SerializableDictionary<string, Vector3> inScenePortals; // Key: scene name, Value: portal position
 
-    public Vector3 savedCheckpoint;
+    public string portalDestinationSceneName;
+    public bool returningFromTown;
+
 
     public GameData()
     {
@@ -31,6 +34,7 @@ public class GameData
         skillUpgrades = new SerializableDictionary<SkillType, SkillUpgradeType>();
 
         unlockedCheckpoints = new SerializableDictionary<string, bool>();
+        inScenePortals = new SerializableDictionary<string, Vector3>();
     }
 
 }

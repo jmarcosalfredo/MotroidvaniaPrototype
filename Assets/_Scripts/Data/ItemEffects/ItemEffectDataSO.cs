@@ -13,7 +13,7 @@ public class ItemEffectDataSO : ScriptableObject // Base class for item effects
 
     public virtual void ExecuteEffect()
     {
-        // Implement the effect logic here
+        // Override the effect logic here
     }
 
     public virtual void Subscribe (Player player)

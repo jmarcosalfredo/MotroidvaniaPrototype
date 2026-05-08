@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 8432230540853036039}
   - component: {fileID: 1858134282284963785}
   m_Layer: 0
-  m_Name: Object_Waypoint -Enter - Level_1
+  m_Name: Object_Waypoint -Exit - Level_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transferToScene: Level_1
   waypointType: 1
-  connectedWaypoint: 2
+  connectedWaypoint: 0
   respawnPoint: {fileID: 0}
   canBeTriggered: 1
 --- !u!61 &1858134282284963785
