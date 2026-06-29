@@ -1,4 +1,4 @@
-<h1 align="center">🎮 Motroidvania Prototype</h1>
+<h1 align="center">🎮 Metroidvania Prototype</h1>
 
 <p align="center">
 A 2D Metroidvania prototype developed in <b>Unity</b>, showcasing gameplay programming,
